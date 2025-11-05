@@ -4,8 +4,7 @@
   "description": "This is an admin service for managing the problems of ALGOFORGE platform",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx nodemon src/index.js"
   },
   "author": "Krrish Kumar",
   "license": "ISC",
