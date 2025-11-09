@@ -54,8 +54,18 @@ async function getProblems(req, res , next) {
          }
 }
 
-function deleteProblem(req, res) {
-
+async function deleteProblem(req, res , next) {
+         try {
+            const response = await problemService.deleteProblem(req.params.id);
+            return res.status(StatusCodes.OK).json({
+                success: true,
+                message: "Successfully deleted the problem",
+                error : {},
+                data: response
+            });
+         } catch (error) {
+            next(error);
+         }
 }
 
 
