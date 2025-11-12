@@ -5,6 +5,7 @@ const { PORT, NODE_ENV } = require('./config/server.config');
 const apiRouter = require('./routes');
 const { errorHandler } = require('./utils');
 const connectToDB = require('./config/db.config');
+const logger = require('./config/logger.config');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.text());
 app.use('/api', apiRouter);
 
 app.get('/ping', (req, res) => {
+    logger.info("ping check")
     return res.json({ message: "Problem Service is alive" });
 });
 

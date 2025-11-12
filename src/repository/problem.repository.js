@@ -46,7 +46,7 @@ class ProblemRepository {
         try {
             const deletedProblem = await Problem.findByIdAndDelete(id);
             if(!deletedProblem){
-                logger.error(`Problem.Repository: Problem with id: ${id} not found in the db`);
+                // logger.error(`Problem.Repository: Problem with id: ${id} not found in the db`);
                 throw new NotFoundError("Problem",id);
             }
             return deletedProblem;
