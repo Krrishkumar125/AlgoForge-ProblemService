@@ -25,8 +25,22 @@ async function addProblem(req, res , next) {
     }
 }
 
-function updateProblem(req, res) {
-
+async function updateProblem(req, res, next) {
+  try {
+    const updatedProblem = await problemService.updateProblem(
+      req.params.id,
+      req.body
+    );
+    logger.info("Successfully updated the problem");
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Successfully updated the problem",
+      error: {},
+      data: updatedProblem,
+    });
+  } catch (error) {
+    next(error);
+  }
 }
 
 async function getProblem(req, res , next) {

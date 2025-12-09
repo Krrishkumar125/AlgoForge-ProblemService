@@ -9,6 +9,8 @@ class ProblemRepository {
             const problem = await Problem.create({
                 title: problemData.title,
                 description: problemData.description,
+                difficulty: problemData.difficulty || 'easy',
+                editorial: problemData.editorial || '',
                 testCases: (problemData.testCases) ? problemData.testCases : []
             });
 
@@ -50,6 +52,29 @@ class ProblemRepository {
                 throw new NotFoundError("Problem",id);
             }
             return deletedProblem;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
+
+    async updateProblem(id, problemData){
+        try {
+            const updatedProblem = await Problem.findByIdAndUpdate(
+                id,
+                {
+                    title: problemData.title,
+                    description: problemData.description,
+                    difficulty: problemData.difficulty,
+                    editorial: problemData.editorial,
+                    testCases: problemData.testCases
+                },
+                { new: true, runValidators: true }
+            );
+            if(!updatedProblem){
+                throw new NotFoundError("Problem", id);
+            }
+            return updatedProblem;
         } catch (error) {
             console.log(error);
             throw error;
