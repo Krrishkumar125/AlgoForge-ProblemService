@@ -26,6 +26,25 @@ const problemSchema = new mongoose.Schema({
             }
         }
     ],
+    codeStubs: [
+        {
+            language: {
+                type: String,
+                enum: ['python', 'javascript', 'java', 'cpp', 'c#', 'ruby', 'go'],
+                required: [true, 'Programming language is missing']
+            },
+            startSnippet: {
+                type: String,
+            },
+            endSnippet: {
+                type: String,
+            },
+            userSnippet: {
+                type: String,
+                default: ''
+            }
+        }
+    ],
     editorial: {
         type: String
     }

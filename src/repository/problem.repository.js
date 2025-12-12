@@ -11,7 +11,8 @@ class ProblemRepository {
                 description: problemData.description,
                 difficulty: problemData.difficulty || 'easy',
                 editorial: problemData.editorial || '',
-                testCases: (problemData.testCases) ? problemData.testCases : []
+                testCases: (problemData.testCases) ? problemData.testCases : [],
+                codeStubs: (problemData.codeStubs) ? problemData.codeStubs : []
             });
 
             return problem;
@@ -67,7 +68,8 @@ class ProblemRepository {
                     description: problemData.description,
                     difficulty: problemData.difficulty,
                     editorial: problemData.editorial,
-                    testCases: problemData.testCases
+                    testCases: problemData.testCases,
+                    codeStubs: problemData.codeStubs
                 },
                 { new: true, runValidators: true }
             );
